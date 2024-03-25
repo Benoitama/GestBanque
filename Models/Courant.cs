@@ -1,4 +1,6 @@
-﻿namespace Models;
+﻿using System.Security.Cryptography;
+
+namespace Models;
 
 
 public class Courant
@@ -7,6 +9,14 @@ public class Courant
     private double _solde;
     private double _ligneDeCredit;
     private Personne _titulaire;
+    
+
+
+    public static double operator +(double amount, Courant s2)  //surcharge d'operateur
+    {
+
+        return (amount < 0 ? 0 : amount) + (s2.Solde < 0 ? 0 : s2.Solde);
+    }
 
     public string Numero
     {

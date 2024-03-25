@@ -4,7 +4,7 @@
     {
         private string _nom;
         private Dictionary<string, Courant> _compte = new Dictionary<string, Courant>();
-        
+
 
         public string Nom
         {
@@ -39,12 +39,34 @@
 
         public void Supprimer(string Numero)
         {
-            if(!_compte.ContainsKey(Numero))
+            if (!_compte.ContainsKey(Numero))
             {
                 return;
             }
             _compte.Remove(Numero);
         }
-       
+
+        public double AvoirDesComptes(Personne titulaire)
+        {
+            double total = 0;
+            foreach (KeyValuePair<string, Courant> compte in _compte) {
+
+                if(compte.Value.Titulaire == titulaire)
+                {
+                    total += compte.Value;
+
+                }
+                /* OU
+                foreach (Courant courant in _compte.Values)
+                {
+                    if(courant.Titulaire == titulaire)
+                    {
+                        total += courant;
+                    }
+                }*/
+
+            }
+            return total;
+        }
     }
 }
