@@ -1,9 +1,9 @@
 ﻿namespace Models
 {
-    public class Banque
+    public class Banque : Compte
     {
         private string _nom;
-        private Dictionary<string, Courant> _compte = new Dictionary<string, Courant>();
+        private Dictionary<string, Compte> _compte = new Dictionary<string, Compte>();
 
 
         public string Nom
@@ -19,7 +19,7 @@
             }
         }
 
-        public Courant? this[string Key] {
+        public Compte? this[string Key] {
             get
             {
                 if (!_compte.ContainsKey(Key))
@@ -32,7 +32,7 @@
 
         }
 
-        public void Ajouter(Courant compte)
+        public void Ajouter(Compte compte)
         {
             _compte.Add(compte.Numero, compte);
         }
@@ -49,21 +49,21 @@
         public double AvoirDesComptes(Personne titulaire)
         {
             double total = 0;
-            foreach (KeyValuePair<string, Courant> compte in _compte) {
+            //foreach (KeyValuePair<string, Courant> compte in _compte) {
 
-                if(compte.Value.Titulaire == titulaire)
-                {
-                    total += compte.Value;
+            //    if(compte.Value.Titulaire == titulaire)
+            //    {
+            //        total += compte.Value;
 
-                }
-                /* OU
-                foreach (Courant courant in _compte.Values)
+            //    }
+                 OU
+                foreach (Compte courant in _compte.Values)
                 {
                     if(courant.Titulaire == titulaire)
                     {
                         total += courant;
                     }
-                }*/
+                
 
             }
             return total;
