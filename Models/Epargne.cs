@@ -18,6 +18,10 @@ public class Epargne : Compte
         }
     }
 
+    protected override double CalculInteret()
+    {
+        return Solde * 4.5/100;
+    }
     public override void Retrait(double montant)
     {
         double ancienSolde = Solde;

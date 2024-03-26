@@ -1,7 +1,7 @@
 ﻿
 namespace Models
 {
-    public class Compte
+    public abstract class Compte
     {
         public static double operator +(double montant, Compte compte)
         {
@@ -24,6 +24,14 @@ namespace Models
                 _numero = value;
             }
         }
+
+        public void AppliquerInteret()
+        {
+            Solde += CalculInteret();
+        }
+        protected abstract double CalculInteret();
+        
+
 
         public double Solde
         {
