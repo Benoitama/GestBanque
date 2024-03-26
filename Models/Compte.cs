@@ -1,7 +1,7 @@
 ﻿
 namespace Models
 {
-    public abstract class Compte
+    public abstract class Compte : ICustomer, IBanker
     {
         public static double operator +(double montant, Compte compte)
         {

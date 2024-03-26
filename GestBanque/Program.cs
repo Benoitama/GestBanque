@@ -5,25 +5,9 @@ class Program
 {
     static void Main(string[] args)
     {
-        Personne doeJohn = new Personne()
-        {
-            Nom = "Doe",
-            Prenom = "John",
-            DateNaiss = new DateTime(1970, 1, 1)
-        };
 
-        Courant courant = new Courant()
-        {
-            Numero = "0001",
-            LigneDeCredit = 500,
-            Titulaire = doeJohn
-        };
+        //Si nous ajoutions la propriété « LigneDeCredit » à « IBanker », définir sur papier les modifications qu’il faudrait apporter à nos classes.
 
-        courant.Depot(-100);
-        courant.Depot(100);
-        courant.Depot(-100);
-        courant.Depot(100);
-        courant.Depot(600);
 
     }
 }

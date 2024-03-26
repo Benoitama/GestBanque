@@ -1,6 +1,6 @@
 ﻿namespace Models
 {
-    public class Banque : Compte
+    public class Banque
     {
         private string _nom;
         private Dictionary<string, Compte> _compte = new Dictionary<string, Compte>();
@@ -56,7 +56,7 @@
             //        total += compte.Value;
 
             //    }
-                 OU
+            //OU
                 foreach (Compte courant in _compte.Values)
                 {
                     if(courant.Titulaire == titulaire)
