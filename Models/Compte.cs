@@ -1,4 +1,6 @@
 ﻿
+using System.Runtime.CompilerServices;
+
 namespace Models
 {
     public abstract class Compte : ICustomer, IBanker
@@ -12,6 +14,18 @@ namespace Models
         private string _numero;
         private double _solde;
 
+    protected Compte(string numero,Personne titulaire)
+        {
+            _numero = numero;
+            _titulaire = titulaire;
+        }
+
+    protected Compte(string numero, Personne titulaire,double solde) : this (numero, titulaire)
+        {
+            Solde = solde;
+
+        }
+
         public string Numero
         {
             get
@@ -19,7 +33,7 @@ namespace Models
                 return _numero;
             }
 
-            set
+            private set
             {
                 _numero = value;
             }
@@ -53,7 +67,7 @@ namespace Models
                 return _titulaire;
             }
 
-            set
+            private set
             {
                 _titulaire = value;
             }

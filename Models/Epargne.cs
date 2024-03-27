@@ -12,10 +12,18 @@ public class Epargne : Compte
             return _dernierRetrait;
         }
 
-        set
+        private set
         {
             _dernierRetrait = value;
         }
+    }
+
+    protected Epargne(string numero, Personne titulaire):base(numero, titulaire)
+    {
+    }
+    protected Epargne(string numero, Personne titulaire, double solde, DateTime dernierRetrait) : base(numero, titulaire, solde)
+    {
+        DernierRetrait = dernierRetrait;
     }
 
     protected override double CalculInteret()

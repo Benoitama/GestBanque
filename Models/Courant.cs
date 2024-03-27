@@ -22,6 +22,19 @@ public class Courant : Compte
         }
     }
 
+    public Courant(string numero, Personne titulaire):base(numero, titulaire)
+    {
+
+    }
+
+    public Courant(string numero, Personne titulaire, double solde) : base(numero, titulaire,solde)
+    {
+
+    }
+    public Courant(string numero, double ligne,Personne titulaire) : base(numero, titulaire)
+    {
+        LigneDeCredit = ligne;
+    }
     protected override double CalculInteret()
     {
         if (Solde > 0)

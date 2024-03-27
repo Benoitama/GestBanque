@@ -1,10 +1,16 @@
-﻿namespace Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Models
 {
     public class Banque
     {
         private string _nom;
         private Dictionary<string, Compte> _compte = new Dictionary<string, Compte>();
 
+        public Banque(string nom)
+        {
+            this._nom = nom;
+        }
 
         public string Nom
         {
@@ -13,7 +19,7 @@
                 return _nom;
             }
 
-            set
+            init
             {
                 _nom = value;
             }
