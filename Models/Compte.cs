@@ -3,8 +3,14 @@ using System.Runtime.CompilerServices;
 
 namespace Models
 {
+
+    //public delegate void PassageEnNegatifDelegate(Compte compte);
+
     public abstract class Compte : ICustomer, IBanker
     {
+
+        public event Action<Compte>? PassageEnNegatifEvent;
+
         public static double operator +(double montant, Compte compte)
         {
             return (montant < 0 ? 0 : montant) + (compte.Solde < 0 ? 0 : compte.Solde);
@@ -14,13 +20,13 @@ namespace Models
         private string _numero;
         private double _solde;
 
-    protected Compte(string numero,Personne titulaire)
+        protected Compte(string numero, Personne titulaire)
         {
             _numero = numero;
             _titulaire = titulaire;
         }
 
-    protected Compte(string numero, Personne titulaire,double solde) : this (numero, titulaire)
+        protected Compte(string numero, Personne titulaire, double solde) : this(numero, titulaire)
         {
             Solde = solde;
 
@@ -44,7 +50,7 @@ namespace Models
             Solde += CalculInteret();
         }
         protected abstract double CalculInteret();
-        
+
 
 
         public double Solde
@@ -105,5 +111,13 @@ namespace Models
 
             Solde -= montant;
         }
+
+        protected void PassageEnNegatif(){
+            Action<Compte>?passageEnNegatifEvent = PassageEnNegatifEvent;
+
+            PassageEnNegatifEvent?.Invoke(this);
+        }
+
+            
     }
 }

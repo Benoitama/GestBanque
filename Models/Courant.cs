@@ -50,5 +50,10 @@ public class Courant : Compte
     public override void Retrait(double montant)
     {
         Retrait(montant, LigneDeCredit);
+
+        if (Solde - montant < 0)
+        {
+            PassageEnNegatif();
+        }
     }
 }
